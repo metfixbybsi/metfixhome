@@ -205,7 +205,11 @@ function vitePluginStorageProxy(): Plugin {
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
+const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
+const pagesBase = repoName ? `/${repoName}/` : "/";
+
 export default defineConfig({
+  base: process.env.GITHUB_PAGES === "true" ? pagesBase : "/",
   plugins,
   resolve: {
     alias: {

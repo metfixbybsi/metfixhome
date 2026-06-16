@@ -15,6 +15,7 @@ function useIsDesktop(breakpoint = 900) {
   }, [breakpoint]);
   return isDesktop;
 }
+import { assetUrl } from "@/const";
 import { ArrowRight, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 
@@ -503,7 +504,7 @@ export default function Classes() {
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" as const, gap: "1rem" }}>
             <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-              <img src="/metfix-lockup.png" alt="MetFix" style={{ height: "2.25rem", width: "auto", display: "block" }} />
+              <img src={assetUrl("/metfix-lockup.png")} alt="MetFix" style={{ height: "2.25rem", width: "auto", display: "block" }} />
             </Link>
             <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" as const }}>
               <Link href="/" style={{ fontFamily: "'DM Sans'", fontSize: "0.8rem", color: "rgba(239,239,239,0.55)", textDecoration: "none" }}>Home</Link>

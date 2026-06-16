@@ -20,7 +20,9 @@ import {
   BookOpen,
   ChevronRight,
 } from "lucide-react";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { assetUrl, basePath } from "@/const";
+import { Link } from "wouter";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // ─── Responsive hook ───────────────────────────────────────────
 function useIsDesktop(breakpoint = 900) {
@@ -34,12 +36,12 @@ function useIsDesktop(breakpoint = 900) {
 }
 
 // ─── Hero Image ────────────────────────────────────────────────
-const HERO_IMG = "/hero.png";
+const HERO_IMG = assetUrl("/hero.png");
 
 // ─── Athlete Image (uploaded asset) ───────────────────────────
-const ATHLETE_IMG = "/manus-storage/emily_athlete_9856284c.jpeg";
-const COURSE_HERO_IMG = "/what-is-metfix-course-hero.png";
-const AFFILIATION_BG_IMG = "/affiliation-bg.png";
+const ATHLETE_IMG = assetUrl("/manus-storage/emily_athlete_9856284c.jpeg");
+const COURSE_HERO_IMG = assetUrl("/what-is-metfix-course-hero.png");
+const AFFILIATION_BG_IMG = assetUrl("/affiliation-bg.png");
 const METFIX_MAP_URL = "https://brokenscience.org/metfix/metfix-map/";
 const MAILCHIMP_NEWSLETTER_ACTION =
   "https://brokenscience.us13.list-manage.com/subscribe/post?u=473a65a0067d6101d3a6277c8&id=abdc550935&f_id=001a53eaf0";
@@ -177,7 +179,7 @@ const LIBRARY_SAMPLES = [
     href: "https://brokenscience.org/a-body-of-lies-emily-kaplan/",
     author: "Emily Kaplan",
     badge: "Free",
-    image: "/emily-kaplan-keynote.png",
+    image: assetUrl("/emily-kaplan-keynote.png"),
     videoId: null,
     featured: true,
   },
@@ -702,9 +704,9 @@ export default function Home() {
               <a href="https://whatis.metfix.org/" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Take the Free Class <ArrowRight size={15} />
               </a>
-              <a href="/become-an-affiliate" className="btn-outline">
+              <Link href="/become-an-affiliate" className="btn-outline">
                 See what you get as a MetFix affiliate
-              </a>
+              </Link>
             </div>
             <a href="https://whatis.metfix.org/" target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontFamily: "'DM Mono'", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(239,239,239,0.75)", textDecoration: "none", textTransform: "uppercase", transition: "color 0.2s", borderBottom: "1px solid rgba(239,239,239,0.15)", paddingBottom: "0.15rem" }}
@@ -804,9 +806,9 @@ export default function Home() {
                 <p style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(239,239,239,0.6)", marginBottom: "2rem", maxWidth: "420px" }}>
                   One community at a time, MetFix is leading by example, showing what's possible when coaches understand the science.
                 </p>
-                <a href="/become-an-affiliate" className="btn-primary">
+                <Link href="/become-an-affiliate" className="btn-primary">
                   Join the Movement <ArrowRight size={15} />
-                </a>
+                </Link>
               </Reveal>
 
               {/* Right: animated counter + mini stats */}
@@ -911,9 +913,9 @@ export default function Home() {
                 <a href="https://whatis.metfix.org/" target="_blank" rel="noopener noreferrer" className="btn-primary">
                   Take the Free Class <ArrowRight size={15} />
                 </a>
-                <a href="/classes" className="btn-outline">
+                <Link href="/classes" className="btn-outline">
                   View All Courses
-                </a>
+                </Link>
               </div>
               <p style={{ fontFamily: "'DM Mono'", fontSize: "0.75rem", letterSpacing: "0.1em", color: "rgba(239,239,239,0.75)", textTransform: "uppercase", marginTop: "1rem" }}>
                 Education you can't find anywhere else
@@ -941,9 +943,9 @@ export default function Home() {
               <span className="display-serif-italic text-gold">Ours actually works.</span>
             </h2>
           <div className="hero-cta-stack" style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="/become-an-affiliate" className="btn-outline">
+              <Link href="/become-an-affiliate" className="btn-outline">
                 See what you get as a MetFix affiliate
-              </a>
+              </Link>
             </div>
           </Reveal>
         </div>
@@ -1059,9 +1061,9 @@ export default function Home() {
                 ))}
               </ul>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                <a href="/become-an-affiliate" className="btn-primary">
+                <Link href="/become-an-affiliate" className="btn-primary">
                   See what you get as a MetFix affiliate <ArrowRight size={15} />
-                </a>
+                </Link>
                 <a href={METFIX_MAP_URL} target="_blank" rel="noopener noreferrer" className="btn-outline">
                   Find a Gym Near You
                 </a>
@@ -1125,7 +1127,7 @@ export default function Home() {
               {/* Founders photo — fills the full left column height */}
               <div style={{ position: "relative", overflow: "hidden", height: "100%", minHeight: "420px" }} className="founders-photo-wrapper">
                 <img
-                  src="/founders.png"
+                  src={assetUrl("/founders.png")}
                   alt="Emily Kaplan and Greg Glassman"
                   style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", objectPosition: "center center", position: "absolute", inset: 0 }}
                 />
@@ -1353,9 +1355,9 @@ export default function Home() {
               <p style={{ fontSize: "1.05rem", lineHeight: 1.75, color: "rgba(239,239,239,0.6)", marginBottom: "2rem" }}>
                 MetFix affiliates are in every corner of the country. Police departments. Fire stations. Schools. Clinics. CrossFit boxes. Independent studios. Everywhere coaches and practitioners are serious about results.
               </p>
-              <a href="/become-an-affiliate" className="btn-primary">
+              <Link href="/become-an-affiliate" className="btn-primary">
                 See what you get as a MetFix affiliate <ArrowRight size={15} />
-              </a>
+              </Link>
             </Reveal>
             <Reveal direction="right">
               <div className="affiliate-pin-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "rgba(255,255,255,0.06)" }}>
@@ -1494,7 +1496,7 @@ export default function Home() {
           <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "3rem", marginBottom: "3rem" }}>
             <div>
               <div style={{ marginBottom: "1.25rem" }}>
-                <img src="/metfix-lockup.png" alt="MetFix" style={{ height: "2.25rem", width: "auto", display: "block" }} />
+                <img src={assetUrl("/metfix-lockup.png")} alt="MetFix" style={{ height: "2.25rem", width: "auto", display: "block" }} />
               </div>
               <p style={{ fontFamily: "'DM Sans'", fontSize: "0.85rem", lineHeight: 1.7, color: "rgba(239,239,239,0.82)", maxWidth: "280px", marginBottom: "1.25rem" }}>
                 The metabolic health education platform for coaches, gym owners, and health leaders fighting chronic disease.
@@ -1509,9 +1511,9 @@ export default function Home() {
               {[
                 { label: "The Daily Fix", href: "https://brokenscience.org/fix/" },
                 { label: "What Is MetFix?", href: "https://whatis.metfix.org/" },
-                { label: "Foundations Seminar", href: "/affiliate-seminars" },
+                { label: "Foundations Seminar", href: "https://brokenscience.org/events/" },
               ].map(l => (
-                <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer"
+                <a key={l.label} href={basePath(l.href)} target={l.href.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer"
                   style={{ display: "block", fontFamily: "'DM Sans'", fontSize: "0.85rem", color: "rgba(239,239,239,0.8)", textDecoration: "none", marginBottom: "0.75rem", transition: "color 0.2s" }}
                   onMouseEnter={e => (e.currentTarget.style.color = "#EFEFEF")}
                   onMouseLeave={e => (e.currentTarget.style.color = "rgba(239,239,239,0.5)")}>{l.label}</a>
@@ -1522,7 +1524,7 @@ export default function Home() {
               {[
                 { label: "Courses", href: "/courses" },
               ].map(l => (
-                <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer"
+                <a key={l.label} href={basePath(l.href)} target={l.href.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer"
                   style={{ display: "block", fontFamily: "'DM Sans'", fontSize: "0.85rem", color: "rgba(239,239,239,0.8)", textDecoration: "none", marginBottom: "0.75rem", transition: "color 0.2s" }}
                   onMouseEnter={e => (e.currentTarget.style.color = "#EFEFEF")}
                   onMouseLeave={e => (e.currentTarget.style.color = "rgba(239,239,239,0.5)")}>{l.label}</a>
@@ -1536,7 +1538,7 @@ export default function Home() {
                 { label: "Broken Science Initiative", href: "https://brokenscience.org/" },
                 { label: "Login", href: "https://brokenscience.org/login/" },
               ].map(l => (
-                <a key={l.label} href={l.href}
+                <a key={l.label} href={basePath(l.href)}
                   target={l.href.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer"
                   style={{ display: "block", fontFamily: "'DM Sans'", fontSize: "0.85rem", color: "rgba(239,239,239,0.8)", textDecoration: "none", marginBottom: "0.75rem", transition: "color 0.2s" }}
                   onMouseEnter={e => (e.currentTarget.style.color = "#EFEFEF")}
@@ -1577,10 +1579,10 @@ export default function Home() {
           className="btn-primary" style={{ flex: 1, justifyContent: "center", fontSize: "0.85rem" }}>
           Start Here <ArrowRight size={14} />
         </a>
-        <a href="/become-an-affiliate"
+        <Link href="/become-an-affiliate"
           style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "0.625rem 1rem", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(239,239,239,0.7)", textDecoration: "none", fontFamily: "'DM Mono'", fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase", whiteSpace: "nowrap", transition: "border-color 0.2s" }}>
           Affiliate
-        </a>
+        </Link>
       </div>
 
     </div>

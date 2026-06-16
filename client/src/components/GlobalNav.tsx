@@ -4,8 +4,10 @@
  * Colors: #0A0A0A bg | #C9A96E gold | #EFEFEF text
  * Fonts: DM Sans (links) · DM Mono (labels)
  */
+import { assetUrl } from "@/const";
 import { ArrowRight, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
 
 const SEARCH_ITEMS = [
   { label: "What Is MetFix? Free Course", href: "https://whatis.metfix.org/", category: "Course" },
@@ -106,9 +108,9 @@ export default function GlobalNav() {
       >
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "4.5rem" }}>
           {/* Logo */}
-          <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-            <img src="/metfix-lockup.png" alt="MetFix" style={{ height: "2.25rem", width: "auto", display: "block" }} />
-          </a>
+          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
+            <img src={assetUrl("/metfix-lockup.png")} alt="MetFix" style={{ height: "2.25rem", width: "auto", display: "block" }} />
+          </Link>
 
           {/* Desktop links */}
           <div style={{ display: isDesktop ? "flex" : "none", gap: "1.25rem", alignItems: "center", flex: 1, justifyContent: "center" }}>
@@ -120,16 +122,27 @@ export default function GlobalNav() {
               { label: "Affiliate", href: "/become-an-affiliate" },
               { label: "About", href: "/#about" },
             ].map((item) => (
+              item.href.startsWith("http") ? (
               <a
                 key={item.href}
                 href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : "_self"}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="nav-link"
                 style={{ whiteSpace: "nowrap" }}
               >
                 {item.label}
               </a>
+              ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="nav-link"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {item.label}
+              </Link>
+              )
             ))}
           </div>
 
@@ -172,16 +185,27 @@ export default function GlobalNav() {
               { label: "Become an Affiliate", href: "/become-an-affiliate" },
               { label: "About", href: "/#about" },
             ].map((item) => (
+              item.href.startsWith("http") ? (
               <a
                 key={item.href}
                 href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : "_self"}
+                target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
                 style={{ display: "block", padding: "0.875rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)", fontFamily: "'DM Sans'", fontSize: "0.9rem", color: "rgba(255,255,255,0.7)", textDecoration: "none" }}
               >
                 {item.label}
               </a>
+              ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                style={{ display: "block", padding: "0.875rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)", fontFamily: "'DM Sans'", fontSize: "0.9rem", color: "rgba(255,255,255,0.7)", textDecoration: "none" }}
+              >
+                {item.label}
+              </Link>
+              )
             ))}
             <div style={{ display: "flex", gap: "0.75rem", marginTop: "1.5rem" }}>
               <a
