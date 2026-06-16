@@ -203,13 +203,18 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const isPagesBuild = process.env.GITHUB_PAGES === "true";
 
-const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
-const pagesBase = repoName ? `/${repoName}/` : "/";
+const plugins = [
+  react(),
+  tailwindcss(),
+  jsxLocPlugin(),
+  ...(isPagesBuild ? [] : [vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()]),
+];
 
 export default defineConfig({
-  base: process.env.GITHUB_PAGES === "true" ? pagesBase : "/",
+  // Relative base keeps assets on the same origin/protocol (fixes mixed-content on GitHub Pages).
+  base: isPagesBuild ? "./" : "/",
   plugins,
   resolve: {
     alias: {

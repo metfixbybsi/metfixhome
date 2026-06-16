@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Router, Switch } from "wouter";
-import { ROUTER_BASE } from "@/const";
+import { getRouterBase } from "@/const";
 import ErrorBoundary from "./components/ErrorBoundary";
 import GlobalNav from "./components/GlobalNav";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -31,7 +31,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <Router base={ROUTER_BASE}>
+          <Router base={getRouterBase()}>
             <GlobalNav />
             <AppRoutes />
           </Router>

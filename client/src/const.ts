@@ -4,19 +4,36 @@ export const LOGIN_URL = "https://brokenscience.org/login/";
 
 export const getLoginUrl = () => LOGIN_URL;
 
+const KNOWN_ROUTES = new Set([
+  "classes",
+  "courses",
+  "become-an-affiliate",
+  "affiliate-seminars",
+  "404",
+]);
+
+/** Wouter base path for GitHub Pages subpaths and custom domains. */
+export function getRouterBase(): string {
+  const base = import.meta.env.BASE_URL;
+  if (base !== "./") return base.replace(/\/$/, "");
+
+  const [first] = window.location.pathname.split("/").filter(Boolean);
+  if (!first || KNOWN_ROUTES.has(first)) return "";
+  return `/${first}`;
+}
+
 /** Public asset URL with Vite base path (needed for GitHub Pages). */
 export function assetUrl(path: string): string {
   return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
 }
 
-/** Internal route or hash link with Vite base path. */
+/** Internal route or hash link with site base path. */
 export function basePath(path: string): string {
   if (/^https?:\/\//.test(path)) return path;
-  if (path.startsWith("/#")) return `${import.meta.env.BASE_URL}${path.slice(2)}`;
-  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+  const prefix = getRouterBase();
+  if (path.startsWith("/#")) return `${prefix}/#${path.slice(2)}`;
+  return `${prefix}${path}`;
 }
-
-export const ROUTER_BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export const HOME_SCROLL_KEY = "metfix-home-scroll";
 
