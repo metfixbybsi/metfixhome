@@ -381,7 +381,29 @@ export default function Classes() {
   return (
     <div style={{ background: "#0A0A0A", color: "#EFEFEF", minHeight: "100vh", overflowX: "hidden", maxWidth: "100vw" }}>
 
-      {/* ─── MAIN NAV ─── */}
+      {/* ─── PAGE HEADER ─── */}
+      <section style={{ paddingTop: "6rem", paddingBottom: "2.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="container">
+          <Reveal>
+            <div className="rule"><span className="label-mono">All Courses</span></div>
+            <h1 className="display-serif" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", maxWidth: "600px", marginBottom: "1rem" }}>
+              The MetFix{" "}
+              <span className="display-serif-italic text-gold">Curriculum</span>
+            </h1>
+            <p style={{ fontFamily: "'DM Sans'", fontSize: "0.95rem", color: "rgba(239,239,239,0.65)", maxWidth: "520px", lineHeight: 1.75, marginBottom: "1.25rem" }}>
+              Every course is built on the same framework: metabolic science that works in the real world. Start free. Go as deep as your practice requires.
+            </p>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.5rem 1rem", background: "rgba(201,169,110,0.07)", border: "1px solid rgba(201,169,110,0.2)", borderRadius: "2px" }}>
+              <span style={{ fontFamily: "'DM Mono'", fontSize: "0.65rem", letterSpacing: "0.1em", color: "#C9A96E", textTransform: "uppercase" as const }}>
+                MetFix affiliates access all specialty courses at no cost and earn revenue share when clients purchase through them.{" "}
+              </span>
+              <Link href="/become-an-affiliate" style={{ fontFamily: "'DM Mono'", fontSize: "0.65rem", letterSpacing: "0.1em", color: "#C9A96E", textDecoration: "underline" }}>
+                Learn more
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ─── STICKY COURSE NAV ─── */}
       <div style={{ position: "sticky", top: "4.5rem", zIndex: 90 }}>
@@ -420,30 +442,6 @@ export default function Classes() {
         </div>
       </div>
       </div>
-
-      {/* ─── PAGE HEADER ─── */}
-      <section style={{ paddingTop: "4rem", paddingBottom: "3rem", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="container">
-          <Reveal>
-            <div className="rule"><span className="label-mono">All Courses</span></div>
-            <h1 className="display-serif" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", maxWidth: "600px", marginBottom: "1rem" }}>
-              The MetFix{" "}
-              <span className="display-serif-italic text-gold">Curriculum</span>
-            </h1>
-            <p style={{ fontFamily: "'DM Sans'", fontSize: "0.95rem", color: "rgba(239,239,239,0.65)", maxWidth: "520px", lineHeight: 1.75, marginBottom: "1.25rem" }}>
-              Every course is built on the same framework: metabolic science that works in the real world. Start free. Go as deep as your practice requires.
-            </p>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.5rem 1rem", background: "rgba(201,169,110,0.07)", border: "1px solid rgba(201,169,110,0.2)", borderRadius: "2px" }}>
-              <span style={{ fontFamily: "'DM Mono'", fontSize: "0.65rem", letterSpacing: "0.1em", color: "#C9A96E", textTransform: "uppercase" as const }}>
-                MetFix affiliates access all specialty courses at no cost and earn revenue share when clients purchase through them.{" "}
-              </span>
-              <Link href="/become-an-affiliate" style={{ fontFamily: "'DM Mono'", fontSize: "0.65rem", letterSpacing: "0.1em", color: "#C9A96E", textDecoration: "underline" }}>
-                Learn more
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* ─── COURSE CARDS ─── */}
       <section style={{ padding: "3rem 0 6rem" }}>
