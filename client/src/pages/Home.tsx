@@ -20,7 +20,7 @@ import {
   BookOpen,
   ChevronRight,
 } from "lucide-react";
-import { assetUrl, basePath } from "@/const";
+import { assetUrl, basePath, HOME_SCROLL_KEY, scrollToHomeSection } from "@/const";
 import { Link } from "wouter";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -671,6 +671,18 @@ export default function Home() {
     );
     if (heroRef.current) obs.observe(heroRef.current);
     return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const pending = sessionStorage.getItem(HOME_SCROLL_KEY);
+    if (pending) {
+      sessionStorage.removeItem(HOME_SCROLL_KEY);
+      requestAnimationFrame(() => scrollToHomeSection(pending));
+      return;
+    }
+    if (window.location.hash === "#about") {
+      requestAnimationFrame(() => scrollToHomeSection("about"));
+    }
   }, []);
 
 

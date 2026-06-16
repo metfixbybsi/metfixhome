@@ -4,10 +4,10 @@
  * Colors: #0A0A0A bg | #C9A96E gold | #EFEFEF text
  * Fonts: DM Sans (links) · DM Mono (labels)
  */
-import { assetUrl } from "@/const";
+import { assetUrl, requestHomeScroll, scrollToHomeSection } from "@/const";
 import { ArrowRight, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 const SEARCH_ITEMS = [
   { label: "What Is MetFix? Free Course", href: "https://whatis.metfix.org/", category: "Course" },
@@ -95,6 +95,61 @@ export default function GlobalNav() {
   const isDesktop = useIsDesktop(900);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [location, setLocation] = useLocation();
+
+  const goToAbout = (closeMenu?: () => void) => {
+    closeMenu?.();
+    const onHome = location === "/" || location === "";
+    if (onHome) {
+      scrollToHomeSection("about");
+    } else {
+      requestHomeScroll("about");
+      setLocation("/");
+    }
+  };
+
+  const renderNavItem = (
+    item: { label: string; href: string },
+    style?: React.CSSProperties,
+    onNavigate?: () => void
+  ) => {
+    if (item.label === "About") {
+      return (
+        <a
+          key={item.href}
+          href="/#about"
+          className="nav-link"
+          style={style}
+          onClick={(e) => {
+            e.preventDefault();
+            goToAbout(onNavigate);
+          }}
+        >
+          {item.label}
+        </a>
+      );
+    }
+    if (item.href.startsWith("http")) {
+      return (
+        <a
+          key={item.href}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-link"
+          style={style}
+          onClick={onNavigate}
+        >
+          {item.label}
+        </a>
+      );
+    }
+    return (
+      <Link key={item.href} href={item.href} className="nav-link" style={style} onClick={onNavigate}>
+        {item.label}
+      </Link>
+    );
+  };
 
   return (
     <>
@@ -121,29 +176,9 @@ export default function GlobalNav() {
               { label: "Seminars", href: "https://brokenscience.org/metfix/seminar-calendar/" },
               { label: "Affiliate", href: "/become-an-affiliate" },
               { label: "About", href: "/#about" },
-            ].map((item) => (
-              item.href.startsWith("http") ? (
-              <a
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link"
-                style={{ whiteSpace: "nowrap" }}
-              >
-                {item.label}
-              </a>
-              ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="nav-link"
-                style={{ whiteSpace: "nowrap" }}
-              >
-                {item.label}
-              </Link>
-              )
-            ))}
+            ].map((item) =>
+              renderNavItem(item, { whiteSpace: "nowrap" })
+            )}
           </div>
 
           {/* Right controls */}
@@ -184,29 +219,21 @@ export default function GlobalNav() {
               { label: "Seminars", href: "https://brokenscience.org/metfix/seminar-calendar/" },
               { label: "Become an Affiliate", href: "/become-an-affiliate" },
               { label: "About", href: "/#about" },
-            ].map((item) => (
-              item.href.startsWith("http") ? (
-              <a
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                style={{ display: "block", padding: "0.875rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)", fontFamily: "'DM Sans'", fontSize: "0.9rem", color: "rgba(255,255,255,0.7)", textDecoration: "none" }}
-              >
-                {item.label}
-              </a>
-              ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                style={{ display: "block", padding: "0.875rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)", fontFamily: "'DM Sans'", fontSize: "0.9rem", color: "rgba(255,255,255,0.7)", textDecoration: "none" }}
-              >
-                {item.label}
-              </Link>
+            ].map((item) =>
+              renderNavItem(
+                item,
+                {
+                  display: "block",
+                  padding: "0.875rem 0",
+                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  fontFamily: "'DM Sans'",
+                  fontSize: "0.9rem",
+                  color: "rgba(255,255,255,0.7)",
+                  textDecoration: "none",
+                },
+                () => setMobileOpen(false)
               )
-            ))}
+            )}
             <div style={{ display: "flex", gap: "0.75rem", marginTop: "1.5rem" }}>
               <a
                 href="https://whatis.metfix.org/"
