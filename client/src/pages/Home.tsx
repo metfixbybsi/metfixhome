@@ -1207,7 +1207,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <a href="https://brokenscience.org/category/articles/" target="_blank" rel="noopener noreferrer"
+              <a href="https://brokenscience.org/all-content/" target="_blank" rel="noopener noreferrer"
                 style={{ display: "inline-flex", alignItems: "center", gap: "0.7rem", fontFamily: "'DM Mono'", fontSize: "0.75rem", letterSpacing: "0.12em", color: "rgba(239,239,239,0.6)", textDecoration: "none", textTransform: "uppercase", transition: "color 0.2s", whiteSpace: "nowrap" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#C9A96E")}
                 onMouseLeave={e => (e.currentTarget.style.color = "rgba(239,239,239,0.6)")}>
@@ -1285,7 +1285,7 @@ export default function Home() {
 
           <Reveal delay={200}>
             <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
-              <a href="https://brokenscience.org/category/articles/" target="_blank" rel="noopener noreferrer" className="btn-outline">
+              <a href="https://brokenscience.org/all-content/" target="_blank" rel="noopener noreferrer" className="btn-outline">
                 Access the Full Library <ArrowRight size={14} />
               </a>
             </div>

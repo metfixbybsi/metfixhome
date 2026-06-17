@@ -13,7 +13,7 @@ const SEARCH_ITEMS = [
   { label: "What Is MetFix? Free Course", href: "https://whatis.metfix.org/", category: "Course" },
   { label: "The Daily Fix: Free Daily Content", href: "https://brokenscience.org/fix/", category: "Free" },
   { label: "All Courses", href: "/courses", category: "Specialty" },
-  { label: "Resource Library", href: "https://brokenscience.org/category/articles/", category: "Resource" },
+  { label: "Resource Library", href: "https://brokenscience.org/all-content/", category: "Resource" },
   { label: "Foundations Seminar: In-Person", href: "/affiliate-seminars", category: "Event" },
   { label: "Become a MetFix Affiliate", href: "/become-an-affiliate", category: "Community" },
   { label: "Broken Science Initiative", href: "https://brokenscience.org/", category: "Research" },
@@ -170,7 +170,7 @@ export default function GlobalNav() {
           <div style={{ display: isDesktop ? "flex" : "none", gap: "1.25rem", alignItems: "center", flex: 1, justifyContent: "center" }}>
             {[
               { label: "Classes", href: "/classes" },
-              { label: "Library", href: "https://brokenscience.org/category/articles/" },
+              { label: "Library", href: "https://brokenscience.org/all-content/" },
               { label: "Daily Fix", href: "https://brokenscience.org/fix/" },
               { label: "Seminars", href: "https://brokenscience.org/metfix/seminar-calendar/" },
               { label: "Affiliate", href: "/become-an-affiliate" },
@@ -213,7 +213,7 @@ export default function GlobalNav() {
           <div style={{ background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "1.5rem" }}>
             {[
               { label: "Classes", href: "/classes" },
-              { label: "Resource Library", href: "https://brokenscience.org/category/articles/" },
+              { label: "Resource Library", href: "https://brokenscience.org/all-content/" },
               { label: "The Daily Fix", href: "https://brokenscience.org/fix/" },
               { label: "Seminars", href: "https://brokenscience.org/metfix/seminar-calendar/" },
               { label: "Become an Affiliate", href: "/become-an-affiliate" },
