@@ -5,8 +5,14 @@
  */
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function NotFound() {
+  usePageMeta({
+    title: "Page Not Found — MetFix",
+    description: "This page could not be found. Return to MetFix for metabolic health affiliation, courses, and seminars.",
+    robots: "noindex, follow",
+  });
   return (
     <div style={{ minHeight: "100vh", background: "#0A0A0A", color: "#EFEFEF", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
       <div style={{ maxWidth: "640px", width: "100%", textAlign: "center" }}>

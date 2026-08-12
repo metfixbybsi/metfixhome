@@ -24,7 +24,10 @@ export function getRouterBase(): string {
 
 /** Public asset URL with Vite base path (needed for GitHub Pages). */
 export function assetUrl(path: string): string {
-  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+  const base =
+    (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.BASE_URL) ||
+    "/";
+  return `${base}${path.replace(/^\//, "")}`;
 }
 
 /** Internal route or hash link with site base path. */

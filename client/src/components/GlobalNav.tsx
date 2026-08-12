@@ -5,6 +5,8 @@
  * Fonts: DM Sans (links) · DM Mono (labels)
  */
 import { assetUrl, requestHomeScroll, scrollToHomeSection } from "@/const";
+import { useSiteSettings } from "@/hooks/useSanityContent";
+import type { NavLink } from "@/lib/contentTypes";
 import { ArrowRight, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
@@ -17,6 +19,7 @@ const SEARCH_ITEMS = [
   { label: "Foundations Seminar: In-Person", href: "/affiliate-seminars", category: "Event" },
   { label: "Become a MetFix Affiliate", href: "/become-an-affiliate", category: "Community" },
   { label: "Broken Science Initiative", href: "https://brokenscience.org/", category: "Research" },
+  { label: "Shop", href: "https://brokenscience.org/shop/", category: "Shop" },
 ];
 
 function useIsDesktop(breakpoint = 900) {
@@ -29,6 +32,15 @@ function useIsDesktop(breakpoint = 900) {
     return () => window.removeEventListener("resize", handler);
   }, [breakpoint]);
   return isDesktop;
+}
+
+function homeHashSection(href: string): string | null {
+  const match = href.match(/^(?:https?:\/\/[^/]+)?\/?#([\w-]+)$/);
+  return match?.[1] ?? null;
+}
+
+function isExternalHref(href: string): boolean {
+  return /^https?:\/\//.test(href) || href.startsWith("mailto:");
 }
 
 function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -95,46 +107,50 @@ export default function GlobalNav() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [location, setLocation] = useLocation();
+  const { settings } = useSiteSettings();
+  const navLinks = settings.navLinks;
 
-  const goToAbout = (closeMenu?: () => void) => {
+  const goToHomeSection = (sectionId: string, closeMenu?: () => void) => {
     closeMenu?.();
     const onHome = location === "/" || location === "";
     if (onHome) {
-      scrollToHomeSection("about");
+      scrollToHomeSection(sectionId);
     } else {
-      requestHomeScroll("about");
+      requestHomeScroll(sectionId);
       setLocation("/");
     }
   };
 
   const renderNavItem = (
-    item: { label: string; href: string },
+    item: NavLink,
     style?: React.CSSProperties,
     onNavigate?: () => void
   ) => {
-    if (item.label === "About") {
+    const sectionId = homeHashSection(item.href);
+    if (sectionId) {
       return (
         <a
-          key={item.href}
-          href="/#about"
+          key={`${item.label}-${item.href}`}
+          href={`/#${sectionId}`}
           className="nav-link"
           style={style}
           onClick={(e) => {
             e.preventDefault();
-            goToAbout(onNavigate);
+            goToHomeSection(sectionId, onNavigate);
           }}
         >
           {item.label}
         </a>
       );
     }
-    if (item.href.startsWith("http")) {
+
+    if (isExternalHref(item.href) || item.openInNewTab) {
       return (
         <a
-          key={item.href}
+          key={`${item.label}-${item.href}`}
           href={item.href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={item.openInNewTab ? "_blank" : undefined}
+          rel={item.openInNewTab ? "noopener noreferrer" : undefined}
           className="nav-link"
           style={style}
           onClick={onNavigate}
@@ -143,8 +159,15 @@ export default function GlobalNav() {
         </a>
       );
     }
+
     return (
-      <Link key={item.href} href={item.href} className="nav-link" style={style} onClick={onNavigate}>
+      <Link
+        key={`${item.label}-${item.href}`}
+        href={item.href}
+        className="nav-link"
+        style={style}
+        onClick={onNavigate}
+      >
         {item.label}
       </Link>
     );
@@ -168,14 +191,7 @@ export default function GlobalNav() {
 
           {/* Desktop links */}
           <div style={{ display: isDesktop ? "flex" : "none", gap: "1.25rem", alignItems: "center", flex: 1, justifyContent: "center" }}>
-            {[
-              { label: "Classes", href: "/classes" },
-              { label: "Library", href: "https://brokenscience.org/all-content/" },
-              { label: "Daily Fix", href: "https://brokenscience.org/fix/" },
-              { label: "Seminars", href: "https://brokenscience.org/metfix/seminar-calendar/" },
-              { label: "Affiliate", href: "/become-an-affiliate" },
-              { label: "About", href: "/#about" },
-            ].map((item) =>
+            {navLinks.map((item) =>
               renderNavItem(item, { whiteSpace: "nowrap" })
             )}
           </div>
@@ -211,14 +227,7 @@ export default function GlobalNav() {
         {/* Mobile menu */}
         {mobileOpen && (
           <div style={{ background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "1.5rem" }}>
-            {[
-              { label: "Classes", href: "/classes" },
-              { label: "Resource Library", href: "https://brokenscience.org/all-content/" },
-              { label: "The Daily Fix", href: "https://brokenscience.org/fix/" },
-              { label: "Seminars", href: "https://brokenscience.org/metfix/seminar-calendar/" },
-              { label: "Become an Affiliate", href: "/become-an-affiliate" },
-              { label: "About", href: "/#about" },
-            ].map((item) =>
+            {navLinks.map((item) =>
               renderNavItem(
                 item,
                 {

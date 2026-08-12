@@ -6,6 +6,8 @@
 import { ArrowRight, Calendar, MapPin, ExternalLink, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
+import CopyrightText from "@/components/CopyrightText";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 function useIsDesktop(breakpoint = 900) {
   const [isDesktop, setIsDesktop] = useState(() => typeof window !== 'undefined' ? window.innerWidth >= breakpoint : true);
@@ -217,6 +219,11 @@ const WHAT_TO_EXPECT = [
 ];
 
 export default function AffiliateSeminars() {
+  usePageMeta({
+    title: "MetFix Foundations Seminars — In-Person Metabolic Health Training",
+    description:
+      "Find MetFix Foundations Seminars near you. Two-day in-person training for coaches and gym owners on the metabolic health framework behind MetFix affiliation.",
+  });
   const isDesktop = useIsDesktop(900);
   const [scrolled, setScrolled] = useState(false);
   const [filter, setFilter] = useState<"all" | "USA" | "International">("all");
@@ -719,7 +726,7 @@ export default function AffiliateSeminars() {
       {/* ═══ FOOTER ═══════════════════════════════════════════════ */}
       <footer style={{ background: "#080808", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2.5rem", paddingBottom: "2rem" }} className="footer-mobile-pad">
         <div className="container">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem" }}>
             <div>
               <div style={{ fontFamily: "'DM Sans'", fontWeight: 800, fontSize: "1rem", letterSpacing: "0.15em", color: "#EFEFEF", textTransform: "uppercase" }}>MetFix</div>
               <div style={{ fontFamily: "'DM Mono'", fontSize: "0.5rem", letterSpacing: "0.18em", color: "#C9A96E", textTransform: "uppercase" }}>The Metabolic Fix</div>
@@ -729,7 +736,7 @@ export default function AffiliateSeminars() {
               <Link href="/classes" style={{ fontFamily: "'DM Sans'", fontSize: "0.8rem", color: "rgba(239,239,239,0.4)", textDecoration: "none" }}>All Courses</Link>
               <Link href="/become-an-affiliate" style={{ fontFamily: "'DM Sans'", fontSize: "0.8rem", color: "rgba(239,239,239,0.4)", textDecoration: "none" }}>Become an Affiliate</Link>
             </div>
-            <div style={{ fontFamily: "'DM Mono'", fontSize: "0.5rem", letterSpacing: "0.1em", color: "rgba(239,239,239,0.2)", textTransform: "uppercase" }}>© 2026 MetFix. All rights reserved.</div>
+            <CopyrightText variant="compact" />
           </div>
         </div>
       </footer>

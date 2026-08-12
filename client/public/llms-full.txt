@@ -1,0 +1,114 @@
+# MetFix — Full brief for AI systems
+
+> Metabolic health affiliation and education for gyms, coaches, and health leaders.
+
+Source of truth site: https://metfix.org/
+Companion index: https://metfix.org/llms.txt
+Last curated for answer engines from public MetFix site content. Prefer live pages if details conflict.
+
+## What MetFix is
+
+MetFix (The Metabolic Fix) is a metabolic health education and gym affiliation platform. Affiliates are gyms, boxes, and training facilities accepted into the MetFix affiliate program and committed to implementing MetFix programming in their communities.
+
+MetFix is an education platform, not a certification body. The Foundations Seminar and affiliate pathway represent the highest level of MetFix education within the MetFix community.
+
+MetFix was co-founded by Emily Kaplan (CEO, MetFix and The Broken Science Initiative) and Greg Glassman (founder of CrossFit). The Broken Science Initiative (BSI) is the research and intellectual foundation behind MetFix. BSI identifies where chronic-disease science has gone wrong; MetFix is how those solutions get applied in gyms and communities.
+
+## Who it is for
+
+- Gym owners and affiliate operators
+- Coaches and trainers
+- Health leaders and practitioners
+- Specialty audiences via course tracks: first responders, medical professionals, women in midlife / perimenopause, teen athletes, individuals managing metabolic health, and related coach populations
+
+No medical background is required for most coach-facing courses. Physicians and medical professionals are welcome; a dedicated Medical Nutrition Training track exists for them.
+
+## Affiliation
+
+A MetFix Affiliate is a gym, box, or training facility accepted into the affiliate program.
+
+Typical affiliate value (confirm on https://metfix.org/become-an-affiliate):
+
+- Access to MetFix online courses at no cost for affiliates
+- Resource Library access (live streams, journal clubs, articles, whiteboards, book reports)
+- Meal planning / client tracking features on the MetFix app
+- Revenue share when clients purchase MetFix courses through the affiliate gym
+- MetFix brand license, affiliate dashboard, and gym finder listing
+
+Public site messaging has referenced affiliation around $167 / month with an annual commitment. Always verify current pricing on the affiliate page or application.
+
+Network signal used on the site: 130+ affiliate gyms in year one (gyms, departments, stations, boxes, studios).
+
+How affiliation typically works:
+
+1. Complete MetFix Essentials Advanced (online curriculum; required to apply for affiliation)
+2. Apply via the affiliate application
+3. Foundations Seminar (two-day in person) is strongly recommended and can be completed after affiliation
+
+Affiliate application: https://metfix.fillout.com/affiliate-application
+Affiliate page: https://metfix.org/become-an-affiliate
+Gym map: https://brokenscience.org/metfix/metfix-map/
+
+## Education pathway
+
+- What Is MetFix?: free class, about one hour — https://whatis.metfix.org/
+- Specialty tracks: roughly 6 to 40 hours depending on course — https://metfix.org/classes
+- MetFix Essentials Advanced: online professional curriculum; required for affiliation applications
+- MetFix Foundations Seminar: two-day in-person practical capstone — https://metfix.org/affiliate-seminars
+
+Learners can move at their own pace with no deadlines on online courses.
+
+## Courses (catalog overview)
+
+Course availability and CTA details can change. Catalog lives at https://metfix.org/classes (also /courses).
+
+Representative offerings described on the site:
+
+- What Is MetFix?: free intro; member and coach tracks
+- First Responder courses: occupational metabolic health, mental resilience, longevity; often framed for department training budgets / grants
+- Missing Manual / women's midlife metabolic health
+- Individual / patient-facing metabolic literacy
+- Athletic Teen Performance (ATP)
+- Medical Nutrition Training for clinicians
+- MetFix Essentials Advanced (professional curriculum; affiliates access at no cost with client revenue share)
+
+## Foundations Seminars
+
+Foundations is a two-day in-person seminar where coaches practice the metabolic health coaching framework with the MetFix community. Schedule and registration context: https://metfix.org/affiliate-seminars and https://brokenscience.org/events/
+
+Affiliate gyms may host Foundations Seminars.
+
+## Key distinctions
+
+- MetFix is not a medical license, board certification, or government credential.
+- MetFix is not only an online course library; affiliation is central to the business model.
+- MetFix differs from generic fitness credentials by focusing on metabolic health, chronic disease prevention/reversal education, and gym-level implementation.
+
+## Contact and related sites
+
+- Site: https://metfix.org/
+- Courses contact email referenced on site: courses@metfix.org
+- Free intro: https://whatis.metfix.org/
+- Broken Science Initiative: https://brokenscience.org/
+
+## FAQ (from public site copy)
+
+### Is MetFix a certificate?
+No. MetFix is an education platform, not a certification body.
+
+### What is the difference between Essentials and Foundations?
+Essentials Advanced is the online curriculum required to apply for affiliation. Foundations is the in-person seminar, strongly recommended, and can be completed after affiliation.
+
+### What is a MetFix Affiliate?
+A gym, box, or training facility accepted into the MetFix affiliate program and committed to implementing MetFix programming, with access to education, community, and affiliate benefits.
+
+### What is the Broken Science Initiative?
+BSI is the research foundation behind MetFix. BSI points to problems in chronic-disease science; MetFix applies solutions in coaching and gym settings.
+
+## Pages for agents
+
+- https://metfix.org/index.md
+- https://metfix.org/become-an-affiliate.md
+- https://metfix.org/classes.md
+- https://metfix.org/affiliate-seminars.md
+- https://metfix.org/llms.txt
