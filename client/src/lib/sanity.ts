@@ -14,6 +14,7 @@ export const sanityClient: SanityClient | null = isSanityConfigured
       projectId,
       dataset,
       apiVersion,
-      useCdn: true,
+      // Live API (not CDN) so Studio publishes show up immediately on the site.
+      useCdn: false,
     })
   : null;
