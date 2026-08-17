@@ -6,8 +6,6 @@ const dataset =
   (import.meta.env.VITE_SANITY_DATASET as string | undefined) || "production";
 const apiVersion =
   (import.meta.env.VITE_SANITY_API_VERSION as string | undefined) || "2025-01-01";
-/** Viewer (read-only) token. Public API does not return courses/testimonials/FAQs without it. */
-const token = (import.meta.env.VITE_SANITY_API_READ_TOKEN as string | undefined)?.trim();
 
 export const isSanityConfigured = Boolean(projectId);
 
@@ -18,6 +16,5 @@ export const sanityClient: SanityClient | null = isSanityConfigured
       apiVersion,
       // Live API (not CDN) so Studio publishes show up immediately on the site.
       useCdn: false,
-      ...(token ? { token } : {}),
     })
   : null;
