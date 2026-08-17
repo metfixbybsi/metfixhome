@@ -45,6 +45,22 @@ Full `/classes` fields **plus** Home Preview fields (show on home, label, previe
 - **Navigation Bar** — labels, URLs, and “open in new tab” for each top-nav link (Studio includes plain-language help for internal vs external links and `target=_blank`)
 - **Copyright Text** for footers
 
+## Live site read token (required for Classes / quotes / FAQs)
+
+Anonymous Sanity queries can see Home Page, Site Settings, and Become an Affiliate, but **not** Courses, Testimonials, or FAQs. The site needs a **Viewer** (read-only) token:
+
+1. [API → Tokens → Add API token](https://www.sanity.io/manage/project/etg9lezr/api#tokens)  
+   Name: `website-read` · Permissions: **Viewer** (not Editor)
+2. Local `.env` (never commit this file):
+
+```
+VITE_SANITY_API_READ_TOKEN=sk...
+```
+
+3. GitHub repo → **Settings → Secrets and variables → Actions** → New secret named `VITE_SANITY_API_READ_TOKEN` with the same value, then push so Pages rebuilds.
+
+Do not paste this token in chat. A Viewer token can only read published content.
+
 ## CORS (required for the live/local site to read content)
 
 In [API → CORS](https://www.sanity.io/manage/project/etg9lezr/api#cors) add:
